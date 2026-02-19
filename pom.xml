@@ -16,6 +16,7 @@
     <module>hms-jooq</module>
     <module>hms-repository</module>
     <module>hms-service</module>
+    <module>hms-db-dist</module>
   </modules>
   <dependencies>
     <dependency>

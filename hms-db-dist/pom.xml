@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.digitalmakers.hms</groupId>
+    <artifactId>hms-server</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+ 
+  <artifactId>hms-db-dist</artifactId>
+ 
+  <name>hms-db-dist</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>
+  
+  <build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>9.22.0</version>
+
+            <configuration>
+                <!-- PostgreSQL connection -->
+                <url>jdbc:postgresql://localhost:5432/hms_db</url>
+                <user>postgres</user>
+                <password>Chittu@321</password>
+
+                <!-- Migration scripts location -->
+                <locations>
+                    <location>filesystem:src/main/resources/db/migration/V1__create_patient_table.sql</location>
+                </locations>
+
+            </configuration>
+
+            <!-- PostgreSQL JDBC Driver Dependency -->
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.7.3</version>
+                </dependency>
+            </dependencies>
+
+        </plugin>
+
+    </plugins>
+</build>
+
+  
+</project>
