@@ -37,10 +37,11 @@
                 <password>Chittu@321</password>
 
                 <!-- Migration scripts location -->
-                <locations>
-                    <location>filesystem:src/main/resources/db/migration/V1__create_patient_table.sql</location>
-                </locations>
+ <baselineOnMigrate>true</baselineOnMigrate>
 
+    <locations>
+        <location>classpath:db/migration</location>
+    </locations>
             </configuration>
 
             <!-- PostgreSQL JDBC Driver Dependency -->
