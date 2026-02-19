@@ -38,6 +38,7 @@
 
                 <!-- Migration scripts location -->
  <baselineOnMigrate>true</baselineOnMigrate>
+<cleanDisabled>false</cleanDisabled>
 
     <locations>
         <location>classpath:db/migration</location>
