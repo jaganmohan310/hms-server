@@ -8,13 +8,18 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
  
-  <groupId>com.digitalmakers.hms</groupId>
+  
   <artifactId>hms-ws</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  
   <name>hms-ws</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
+	 <dependency>
+		 <groupId>com.digitalmakers.hms</groupId>
+		 <artifactId>hms-oas</artifactId>
+		 <version>1.0-SNAPSHOT</version>
+	 </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
