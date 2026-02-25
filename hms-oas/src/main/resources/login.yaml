@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Authentication API
+  version: 1.0.0
+  description: Login API with mandatory header validation
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /api/login:
+    post:
+      summary: User Login
+      operationId: loginUser
+      tags:
+        - Authentication
+
+      parameters:
+        - $ref: '#/components/parameters/OrgId'
+        - $ref: '#/components/parameters/SourceApplication'
+        - $ref: '#/components/parameters/Destination'
+        - $ref: '#/components/parameters/SecurityKey'
+        - $ref: '#/components/parameters/UserId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Missing or invalid headers
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+
+components:
+
+  parameters:
+    OrgId:
+      name: orgid
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Unique request identifier
+
+    SourceApplication:
+      name: sourceApplication
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Calling application name
+
+    Destination:
+      name: destination
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Target service name
+
+    SecurityKey:
+      name: securitykey
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Security validation key
+
+    UserId:
+      name: userId
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Logged in user ID
+
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: tej123
+        password:
+          type: string
+          example: password@123
+
+    LoginResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Login successful
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
